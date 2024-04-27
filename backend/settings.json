@@ -1,0 +1,25 @@
+{
+  "port": 9000,
+  "base": "http://localhost:3000",
+  "api": "http://localhost:9000",
+  "origin": [
+    "http://localhost:3000",
+    "http://localhost:3000",
+    "http://localhost:9000"
+  ], 
+  "useHTTP2": false,
+  "SMTP_HOST": "",
+  "SMTP_PORT": "",
+  "SMTP_USER": "",
+  "SMTP_PASSWORD": "",
+  "JWT_SECRET": "5klhfpoasydrehkjhadfkhkjhkjasdf43454",
+  "NODE_ENV":"development",
+  "mongodbURL": "mongodb+srv://dropshipping:TRGYx5rMSwJ9D9bF@cluster0.llijbhy.mongodb.net/dropshipping?retryWrites=true&w=majority&appName=Cluster0",
+  "bkash": {
+    "username": "sandboxTokenizedUser02",
+    "password": "sandboxTokenizedUser02@12345",
+    "appKey": "4f6o0cjiki2rfm34kfdadl1eqq",
+    "appSecret": "2is7hdktrekvrbljjh44ll3d9l1dtjo4pasmjvs5vl5qr3fug4b",
+    "isSandbox": true
+  }
+}
