@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * A dynamic input field which can be used all over the site.
@@ -11,17 +11,16 @@ import React from 'react';
  * @returns It returns the appropriate input field with the params you provided.
  */
 export default function Input({
-  type = 'text',
-  className = '',
-  label = 'Label',
-  placeholder = 'input',
-  name = 'input',
+  type = "text",
+  className = "",
+  label = "Label",
+  placeholder = "input",
+  name = "input",
   endAdornment = false,
   required = false,
   disabled = false,
   register,
 }) {
-
   return (
     <input
       id={label}

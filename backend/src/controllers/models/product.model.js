@@ -1,74 +1,72 @@
 import mongoose from "mongoose";
 
-// Define the product schema
 const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true, // Product name is required
+      required: true,
     },
     categoryId: {
       type: String,
-      required: true, // Product category
+      required: true,
     },
     image: {
-      type: String, // Main product image
+      type: String,
       required: true,
     },
     subImages: {
-      type: [String], // Array of additional product images
-      default: [], // Empty array by default
+      type: [String],
+      default: [],
     },
     price: {
       type: Number,
-      required: true, // Product price
+      required: true,
     },
     regularPrice: {
-      type: Number, // Regular price (before any discount)
+      type: Number,
       required: true,
     },
     flashSale: {
-      type: Boolean, // Whether the product is on flash sale
+      type: Boolean,
       default: false,
     },
     forYou: {
-      type: Boolean, // Whether the product is recommended
+      type: Boolean,
       default: false,
     },
     shop: {
-      type: String, // Shop name
+      type: String,
       required: true,
     },
     shopEmail: {
-      type: String, // Shop's email
+      type: String,
       required: true,
     },
     available_quantity: {
-      type: Number, // Stock quantity
+      type: Number,
       required: true,
       default: 0,
     },
     sells: {
-      type: Number, // Number of units sold
+      type: Number,
       default: 0,
     },
     status: {
-      type: String, // Status (e.g., approved, pending)
+      type: String,
       required: true,
     },
     description: {
-      type: String, // Product description
+      type: String,
       default: "",
     },
     brand: {
-      type: String, // Brand name
+      type: String,
       default: "",
     },
   },
-  { timestamps: true } // To track when the product was created or updated
+  { timestamps: true }
 );
 
-// Create the product model
 const Product = mongoose.model("Product", productSchema);
 
 export default Product;

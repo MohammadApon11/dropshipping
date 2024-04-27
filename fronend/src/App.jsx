@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
-import TopHeader from './Components/TopHeader';
-import Routing from './Features/Routing';
+import React from "react";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import TopHeader from "./Components/TopHeader";
+import Routing from "./Features/Routing";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Routing />
       </div>
       <Footer />
+      <Toaster />
     </div>
   );
 }

@@ -24,7 +24,17 @@ import * as operations from "./controllers/operations";
 import settings from "../settings.json";
 import { imageUp } from "./controllers/imageUp";
 import { login, logout, signup } from "./controllers/users/auth.controllers.js";
-import { getProducts } from "./controllers/products/product.controllers.js";
+import {
+  getProducts,
+  getProductsByCategoriesId,
+  getProductsByProductId,
+} from "./controllers/products/product.controllers.js";
+import {
+  addToCart,
+  getCartProductsByUserEmail,
+} from "./controllers/Cart/cart.controllers.js";
+import protectRoute from "./middleware/protectRoute.js";
+import { getCategories } from "./controllers/categories/categories.controllers.js";
 
 export default class App {
   constructor() {
@@ -110,8 +120,15 @@ export default class App {
     this.router.post("/login", login);
     this.router.post("/signup", signup);
     this.router.post("/logout", logout);
+    // get categories
+    this.router.get("/categories", getCategories);
     // get products
     this.router.get("/products", getProducts);
+    this.router.get("/product/:productId", getProductsByProductId);
+    this.router.get("/products/:categoryId", getProductsByCategoriesId);
+    // add to cart
+    this.router.post("/addToCart", protectRoute, addToCart);
+    this.router.get("/addToCart/:userEmail", getCartProductsByUserEmail); // protected route need
   }
   // end change me ----------------
 

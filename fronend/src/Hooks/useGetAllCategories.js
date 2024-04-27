@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../Utils";
 
-const useGetAllProducts = () => {
-  const [products, setProducts] = useState([]);
+const useGetAllCategories = () => {
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getCategories = async () => {
       try {
-        const response = await axios.get(`${baseURL}/api/products`);
-        setProducts(response.data);
+        const response = await axios.get(`${baseURL}/api/categories`);
+        setCategories(response.data);
       } catch (err) {
         setError(err);
       } finally {
@@ -19,10 +19,10 @@ const useGetAllProducts = () => {
       }
     };
 
-    getProducts();
+    getCategories();
   }, []);
 
-  return { products, loading, error };
+  return { categories, loading, error };
 };
 
-export default useGetAllProducts;
+export default useGetAllCategories;
