@@ -3,6 +3,7 @@ import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignup from "../../Hooks/useSignup";
 import { signupBg } from "../../Assets";
+import { UseScrollTop } from "../../Hooks/useScrollTop";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -20,7 +21,7 @@ const SignUp = () => {
   const handleCheckBoxChange = (gender) => {
     setInputs({ ...inputs, gender });
   };
-  
+
   const { loading, signup } = useSignup();
 
   const handleSubmit = async (e) => {
@@ -33,6 +34,7 @@ const SignUp = () => {
       className="bg-cover h-full py-10 flex items-center justify-center "
       style={{ backgroundImage: `url(${signupBg})` }}
     >
+      <UseScrollTop />
       <div className="sm:w-[550px] w-[300px] mx-auto">
         <div className="w-full p-8 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
           <h1 className="text-3xl font-semibold text-center text-header">

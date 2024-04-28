@@ -16,6 +16,7 @@ import useGetAllProducts from "../Hooks/useGetAllProducts";
 import useGetAllCategories from "../Hooks/useGetAllCategories";
 import { UseScrollTop } from "../Hooks/useScrollTop";
 import useGetProductsCategoryById from "../Hooks/useGetProductsCategoryById";
+import { useAuthContext } from "../Contexts/AuthContext";
 
 const footerData = [
   {
@@ -53,7 +54,7 @@ export default function ProductsPage() {
   const { productsByCategory } = useGetProductsCategoryById(categoryId);
   const { products, loading, error } = useGetAllProducts();
   const { categories } = useGetAllCategories();
-
+  const { authUser } = useAuthContext();
   const topRatedProducts = products.filter((product) => product.ratings === 5);
   const notify = () =>
     toast("Feature Coming Soon!", {
@@ -89,35 +90,41 @@ export default function ProductsPage() {
                 to={""}
                 key={index}
               >
-                <Link to={`/product/${product?._id}`}>
+                <Link to={authUser ? `/product/${product?._id}` : "/login"}>
                   <img
                     className="border w-[100px] h-[70px]"
                     src={product?.image}
                     alt={product?.name}
                   />
                 </Link>
-                <div className="flex flex-col gap-1">
-                  <p className="text-[13px] text-gray-400">
-                    {product?.name.substring(0, 15)}
-                  </p>
-                  <div className="flex items-center gap-[2px]">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <FaStar
-                        className="text-[#ffde37] text-[14px]"
-                        key={index}
-                      />
-                    ))}
+                {authUser ? (
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[13px] text-gray-400">
+                      {product?.name.substring(0, 15)}
+                    </p>
+                    <div className="flex items-center gap-[2px]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <FaStar
+                          className="text-[#ffde37] text-[14px]"
+                          key={index}
+                        />
+                      ))}
+                    </div>
+                    <p>
+                      <span className="text-[#f90] text-[14px] font-semibold">
+                        {" "}
+                        Tk {product?.price}
+                      </span>{" "}
+                      <del className="text-[12px] text-gray-400">
+                        Tk {product?.price + 20}
+                      </del>
+                    </p>
                   </div>
-                  <p>
-                    <span className="text-pink-500 text-[14px] font-semibold">
-                      {" "}
-                      Tk {product?.price}
-                    </span>{" "}
-                    <del className="text-[12px] text-gray-400">
-                      Tk {product?.price + 20}
-                    </del>
-                  </p>
-                </div>
+                ) : (
+                  <Link to="/login" className="text-red-500 underline">
+                    Please Join as a dropshipper!
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -128,7 +135,7 @@ export default function ProductsPage() {
           ) : (
             <p className="text-black">
               {productsByCategory?.length} Items found for{" "}
-              <span className="text-pink-500">
+              <span className="text-[#f90]">
                 "
                 {categoryId === "officesupplies"
                   ? categoryId.split("su").join(" su").charAt(0).toUpperCase() +
@@ -158,14 +165,14 @@ export default function ProductsPage() {
         {footerData?.map((item, index) => (
           <div
             className={`border lg:p-[24px] xxs:p-[10px] text-black uppercase text-[15px] font-semibold ${
-              index === 4 && "bg-pink-500 flex flex-col justify-center"
+              index === 4 && "bg-[#f90] flex flex-col justify-center"
             }`}
             key={index}
           >
             {index <= 3 && (
               <>
                 {" "}
-                <div className="w-[60px] mx-auto h-[60px] rounded-[50%] border-dotted border-[2px] flex items-center justify-center text-pink-500 border-pink-500 text-[20px]">
+                <div className="w-[60px] mx-auto h-[60px] rounded-[50%] border-dotted border-[2px] flex items-center justify-center text-[#f90] border-pink-500 text-[20px]">
                   {item?.icon}
                 </div>
                 <p className="mt-[20px] text-center">{item?.title1}</p>
@@ -178,7 +185,7 @@ export default function ProductsPage() {
                   onClick={() => notify()}
                   className="flex items-center justify-center lg:gap-2 gap-[4px] bg-white rounded-[26px] lg:py-3 py-2  cursor-pointer text-[15px] xxs:max-mobile:text-[12px]"
                 >
-                  <span className="text-pink-500 lg:text-[23px] text-[20px]">
+                  <span className="text-[#f90] lg:text-[23px] text-[20px]">
                     {item?.icon1}
                   </span>{" "}
                   {item?.title3}
@@ -187,7 +194,7 @@ export default function ProductsPage() {
                   onClick={() => notify()}
                   className="flex items-center justify-center lg:gap-2 gap-1 bg-white rounded-[26px] lg:py-3 py-2 cursor-pointer mt-2 text-[15px] xxs:max-mobile:text-[12px]"
                 >
-                  <span className="text-pink-500 lg:text-[23px] text-[20px]">
+                  <span className="text-[#f90] lg:text-[23px] text-[20px]">
                     {item?.icon2}
                   </span>{" "}
                   {item?.title3}

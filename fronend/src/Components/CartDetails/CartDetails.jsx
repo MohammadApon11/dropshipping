@@ -126,7 +126,7 @@ export default function CartDetails() {
                       onClick={() => handleDelete(item?._id)}
                       className="text-xl cursor-pointer hover:text-red-500 transition-all duration-300"
                     />
-                    <div className="flex items-center gap-2 cursor-pointer hover:text-blue-500 transition-all duration-300">
+                    <div className="flex items-center gap-2 cursor-pointer hover:text-[#f90] transition-all duration-300">
                       <FaRegHeart
                         onClick={() => handleAddToWishlist(item?.productId)}
                         className="text-xl"
@@ -176,7 +176,7 @@ export default function CartDetails() {
                 </div>
                 <div className="">
                   <p>${item?.quantity * item?.price}</p>
-                  <del className="text-pink-500">
+                  <del className="text-[#f90]">
                     ${item?.quantity * item?.regularPrice}
                   </del>
                 </div>

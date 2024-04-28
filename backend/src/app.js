@@ -38,6 +38,7 @@ import {
   addToWishlist,
   deleteCartProduct,
   getCartProductsByUserEmail,
+  getWishlistProductsByUserEmail,
   quantityUpdate,
 } from "./controllers/cart/cart.controllers.js";
 
@@ -137,6 +138,8 @@ export default class App {
     this.router.put("/quantityUpdate/:_id", quantityUpdate);
     this.router.get("/addToCart/:userEmail", getCartProductsByUserEmail);
     this.router.delete("/deleteCartProduct/:_id", deleteCartProduct);
+    // wishlist
+    this.router.get("/wishlist/:userEmail", getWishlistProductsByUserEmail);
     this.router.post("/addToWishlist/:_id", addToWishlist);
   }
   // end change me ----------------

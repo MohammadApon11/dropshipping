@@ -10,7 +10,7 @@ const FlashSale = () => {
   return (
     <SectionWraper>
       <h3 className="text-black text-[24px] mb-[15px]">Flash Sale</h3>
-      <div className="mt-4 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+      <div className="mt-4 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 border-t border-b">
         {loading
           ? "Please wait..."
           : flashSaleProdcuts?.map((product, index) => (

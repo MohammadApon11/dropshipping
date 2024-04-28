@@ -3,8 +3,8 @@ import axios from "axios";
 import { baseURL } from "../Utils";
 import { useGlobalCtx } from "../Contexts/GlobalProvider";
 
-const useGetAllCartProductByUserEmail = (userEmail) => {
-  const [allCartProduct, setAllCartProduct] = useState([]);
+const useGetAllWishlist = (userEmail) => {
+  const [allWishlistProduct, setallWishlistProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { cartUpdateFlag } = useGlobalCtx();
@@ -12,9 +12,9 @@ const useGetAllCartProductByUserEmail = (userEmail) => {
     const fetchCarts = async () => {
       try {
         const response = await axios.get(
-          `${baseURL}/api/addToCart/${userEmail}`
+          `${baseURL}/api/wishlist/${userEmail}`
         );
-        setAllCartProduct(response.data);
+        setallWishlistProduct(response.data);
       } catch (err) {
         setError(err);
       } finally {
@@ -27,7 +27,7 @@ const useGetAllCartProductByUserEmail = (userEmail) => {
     }
   }, [userEmail, cartUpdateFlag]);
 
-  return { allCartProduct, loading, error };
+  return { allWishlistProduct, loading, error };
 };
 
-export default useGetAllCartProductByUserEmail;
+export default useGetAllWishlist;

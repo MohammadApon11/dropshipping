@@ -8,6 +8,8 @@ import useLogout from "../Hooks/useLogout";
 import { MdAddShoppingCart } from "react-icons/md";
 import { LuShoppingCart } from "react-icons/lu";
 import useGetAllCartProductByUserEmail from "../Hooks/useGetAllCartProductByUserEmail";
+import { FaRegHeart } from "react-icons/fa";
+import useGetAllWishlist from "../Hooks/useGetAllWishlist";
 
 export default function TopHeader() {
   const { authUser } = useAuthContext();
@@ -16,6 +18,7 @@ export default function TopHeader() {
   const { allCartProduct } = useGetAllCartProductByUserEmail(
     authUser?.userEmail
   );
+  const { allWishlistProduct } = useGetAllWishlist(authUser?.userEmail);
   return (
     <div className="flex justify-between items-center py-5 space-x-8">
       <div className="flex items-center space-x-3.5">
@@ -45,22 +48,36 @@ export default function TopHeader() {
             Join As A Dropshipper
           </Link>
         )}
-        <div className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full">
-          <SVGIcon Icon={Notification} />
-        </div>
-        <Link
-          to="/cart"
-          className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full"
-        >
-          <div className="w-4 h-4 flex items-center justify-center -mt-9 absolute ml-4 bg-header text-white rounded-full text-[14px]">
-            <span className="">{allCartProduct?.length}</span>
-          </div>
-          {allCartProduct?.length < 0 ? (
-            <MdAddShoppingCart className="text-header text-xl" />
-          ) : (
-            <LuShoppingCart className="text-header text-xl" />
-          )}
-        </Link>
+        {authUser && (
+          <>
+            <Link
+              to="/wishlist"
+              className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full"
+            >
+              <div className="w-4 h-4 flex items-center justify-center -mt-9 absolute ml-4 bg-header text-white rounded-full text-[14px]">
+                <span className="">
+                  {allWishlistProduct?.items?.length > 0
+                    ? allWishlistProduct?.items?.length
+                    : 0}
+                </span>
+              </div>
+              <FaRegHeart className="text-xl" />
+            </Link>
+            <Link
+              to="/cart"
+              className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full"
+            >
+              <div className="w-4 h-4 flex items-center justify-center -mt-9 absolute ml-4 bg-header text-white rounded-full text-[14px]">
+                <span className="">{allCartProduct?.length}</span>
+              </div>
+              {allCartProduct?.length < 0 ? (
+                <MdAddShoppingCart className="text-header text-xl" />
+              ) : (
+                <LuShoppingCart className="text-header text-xl" />
+              )}
+            </Link>
+          </>
+        )}
         <div
           onMouseOver={() => setShowLogout(true)}
           onMouseLeave={() => setShowLogout(false)}

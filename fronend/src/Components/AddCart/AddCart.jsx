@@ -141,32 +141,32 @@ const AddCart = () => {
                 readOnly
                 itemStyles={customStyles}
               />
-              <span className="text-[14px] text-pink-500 py-2">
+              <span className="text-[14px] text-[#f90] py-2">
                 ({`${product?.reviews?.length} customer reviews`})
               </span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-gray-400 text-[15px]">
-                Brand: <span className="text-pink-500">{product?.brand}</span>
+                Brand: <span className="text-[#f90]">{product?.brand}</span>
               </span>
               <span className="text-gray-400 text-[15px]">
-                Shop: <span className="text-pink-500">{product?.shop}</span>
+                Shop: <span className="text-[#f90]">{product?.shop}</span>
               </span>
             </div>
           </div>
           <div className="border-b border-dotted py-3">
             <p>
-              <span className="text-pink-500 font-semibold text-[28px]">
+              <span className="text-[#f90] font-semibold text-[28px]">
                 {" "}
-                Tk {product?.price}
+                ${product?.price}
               </span>
               {"  "}
               <del className="text-[16px] text-gray-400">
-                Tk {product?.price + 20}
+                ${product?.price + 20}
               </del>
             </p>
             <span className="flex items-center gap-1 mt-2 text-[15px]">
-              <FaCheckCircle className="text-pink-500" /> In Stock: (
+              <FaCheckCircle className="text-[#f90]" /> In Stock: (
               {product?.available_quantity}+ available)
             </span>
           </div>
@@ -174,10 +174,10 @@ const AddCart = () => {
             {isAlreadyAddedToCart ? (
               <Link
                 to={"/cart"}
-                className={`rounded-[24px] flex items-center justify-center gap-2 w-[400px] h-[50px]  hover:text-white ${
+                className={`rounded-[24px] flex items-center justify-center gap-2 w-[400px] h-[50px]  text-white transition-all duration-300 ${
                   isAlreadyAddedToCart
-                    ? "hover:bg-[#f90] bg-white text-black hover:text-white shadow-md"
-                    : "hover:bg-pink-400 bg-pink-500"
+                    ? "bg-[#f90] hover:text-white shadow-md"
+                    : "hover:bg-[#ff8000] bg-[#f90]"
                 }`}
               >
                 <FaCartPlus className="text-[20px]" />
@@ -186,7 +186,7 @@ const AddCart = () => {
             ) : (
               <button
                 onClick={handleAddToCart}
-                className={`rounded-[24px] text-white flex items-center justify-center gap-2 w-[400px] h-[50px] hover:bg-pink-400 bg-pink-500`}
+                className={`rounded-[24px] text-white flex items-center justify-center gap-2 w-[400px] h-[50px] transition-all duration-300 hover:bg-[#ff8000] bg-[#f90]`}
               >
                 <FaCartPlus className="text-[20px]" />
                 Add to cart
@@ -215,7 +215,7 @@ const AddCart = () => {
       </div>
 
       <div className="">
-        <div className="bg-pink-500 flex items-center justify-center w-[140px] h-[60px] text-white text-[17px] rounded-t-md">
+        <div className="bg-[#f90] flex items-center justify-center w-[140px] h-[60px] text-white text-[17px] rounded-t-md">
           Reviews ({product?.reviews?.length})
         </div>
         <div className="grid grid-cols-12 bg-white border p-[24px] pt-[40px] text-black">
@@ -283,7 +283,7 @@ const AddCart = () => {
                       )
                   )}
               {product?.reviews?.length > 5 && (
-                <div className="border-t border-b text-center py-3 mt-5 text-pink-500 ">
+                <div className="border-t border-b text-center py-3 mt-5 text-[#f90] ">
                   <span
                     className="cursor-pointer"
                     onClick={() => setShowALlReviews(!showAllReviews)}
@@ -300,7 +300,7 @@ const AddCart = () => {
             </div>
             <div className="mt-[50px]">
               <span className="text-[15px]">
-                Your rating <span className="text-pink-500">*</span>
+                Your rating <span className="text-[#f90]">*</span>
               </span>
               <Rating
                 style={{ maxWidth: 80 }}
@@ -316,7 +316,7 @@ const AddCart = () => {
                   className="h-[120px] w-full bg-transparent border rounded-md outline-none p-[15px]"
                   {...register("review")}
                 ></textarea>
-                <button className="bg-pink-500 text-white px-5 rounded-md py-1 hover:bg-pink-400">
+                <button className="bg-[#f90] text-white px-5 rounded-md py-1 hover:bg-[#ff8000]">
                   Submit
                 </button>
               </form>

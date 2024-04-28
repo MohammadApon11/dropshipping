@@ -61,6 +61,26 @@ export const getCartProductsByUserEmail = async (req, res) => {
   }
 };
 
+export const getWishlistProductsByUserEmail = async (req, res) => {
+  try {
+    const userEmail = req.params.userEmail;
+    const wishlistProduct = await Wishlist.findOne({ userEmail });
+
+    if (wishlistProduct.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No wishlist Products found for this user email" });
+    }
+
+    res.json(wishlistProduct);
+  } catch (error) {
+    console.error("Error fetching wishlist Products by user email:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching wishlist Products" });
+  }
+};
+
 export const deleteCartProduct = async (req, res) => {
   try {
     const { _id } = req.params; // Get productId from URL parameter

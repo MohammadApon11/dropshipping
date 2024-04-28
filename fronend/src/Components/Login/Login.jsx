@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../Hooks/useLogin";
 import { loginBg } from "../../Assets";
+import { UseScrollTop } from "../../Hooks/useScrollTop";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -19,6 +20,7 @@ const Login = () => {
       className="bg-cover h-full py-10 flex items-center justify-center "
       style={{ backgroundImage: `url(${loginBg})` }}
     >
+      <UseScrollTop />
       <div className="sm:w-[420px] w-[300px] mx-auto">
         <div className="w-full p-8 rounded-lg shadow-md bg-white bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
           <h1 className="text-3xl font-semibold text-center text-blue-600">
