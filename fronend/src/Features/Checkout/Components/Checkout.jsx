@@ -11,7 +11,7 @@ function Checkout() {
   return (
     <form onSubmit={handleSubmit(onSubmit())}>
       <div className="grid grid-cols-12 gap-x-8 py-12">
-        <div className="col-span-7 ">
+        <div className="col-span-7">
           <Contact register={register} />
         </div>
         <div className="col-span-5 ">

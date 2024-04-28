@@ -25,6 +25,7 @@ import settings from "../settings.json";
 import { imageUp } from "./controllers/imageUp";
 import { login, logout, signup } from "./controllers/users/auth.controllers.js";
 import {
+  addReview,
   getProducts,
   getProductsByCategoriesId,
   getProductsByProductId,
@@ -126,6 +127,7 @@ export default class App {
     this.router.get("/products", getProducts);
     this.router.get("/product/:productId", getProductsByProductId);
     this.router.get("/products/:categoryId", getProductsByCategoriesId);
+    this.router.put("/product/:productId", addReview);
     // add to cart
     this.router.post("/addToCart", protectRoute, addToCart);
     this.router.get("/addToCart/:userEmail", getCartProductsByUserEmail); // protected route need

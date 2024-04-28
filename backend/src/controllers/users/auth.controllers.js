@@ -1,11 +1,21 @@
 import bcrypt from "bcryptjs";
-import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../../utils/generateToken.js";
+import User from "../../models/user.model.js";
 
 export const signup = async (req, res) => {
   // res.json({ message: "This is an sign up endpoint" });
   try {
-    const { fullName, userEmail, password, confirmPassword, gender } = req.body;
+    const {
+      fullName,
+      userEmail,
+      password,
+      confirmPassword,
+      userMobile,
+      shopName,
+      shopAddress,
+      url,
+      gender,
+    } = req.body;
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Password don't match" });
     }
@@ -27,6 +37,10 @@ export const signup = async (req, res) => {
       fullName,
       userEmail,
       password: hashedPassword,
+      userMobile,
+      shopName,
+      shopAddress,
+      url,
       gender,
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
     });
@@ -38,6 +52,10 @@ export const signup = async (req, res) => {
         _id: newUser._id,
         fullName: newUser.fullName,
         userEmail: newUser.userEmail,
+        userMobile: newUser.userMobile,
+        shopName: newUser.shopName,
+        shopAddress: newUser.shopAddress,
+        url: newUser.url,
         profilePic: newUser.profilePic,
       });
     } else {

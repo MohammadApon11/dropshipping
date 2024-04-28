@@ -18,7 +18,7 @@ const Marque = () => {
         </Marquee>
         <button
           onClick={() => toast.success("Just Read!😊")}
-          className="btn cursor-text  text-white rounded-l-none lg:btn-sm btn-xs border-none bg-header px-5 py-1 rounded-r-xl"
+          className="cursor-text  text-white rounded-l-none lg:btn-sm btn-xs border-none bg-header px-5 py-1 rounded-r-xl"
         >
           Headline
         </button>

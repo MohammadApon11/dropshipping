@@ -15,6 +15,22 @@ const userSchema = new mongoose.Schema(
       required: true,
       minLength: 6,
     },
+    userMobile: {
+      type: Number,
+      required: true,
+    },
+    shopName: {
+      type: String,
+      required: true,
+    },
+    shopAddress: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
     gender: {
       type: String,
       required: true,
