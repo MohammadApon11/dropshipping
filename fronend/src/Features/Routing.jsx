@@ -9,6 +9,7 @@ import LoginPage from "../Pages/LoginPage";
 import SignupPage from "../Pages/SignupPage";
 import Success from "../Components/Success/Success";
 import Fail from "../Components/Fail/Fail";
+import CartDetailPage from "../Pages/CartDetailPage";
 
 export default function Routing() {
   const { authUser } = useAuthContext();
@@ -18,6 +19,7 @@ export default function Routing() {
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:categoryId" element={<ProductsPage />} />
       <Route path="/product/:productId" element={<CartPage />} />
+      <Route path="/cart" element={<CartDetailPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/success" element={<Success />} />
       <Route path="/fail?" element={<Fail />} />

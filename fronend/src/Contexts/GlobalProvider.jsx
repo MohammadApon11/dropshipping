@@ -1,19 +1,24 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, {
-  createContext,
-  useContext,
-} from 'react';
-import useGlobal from '../Hooks/useGlobal';
+import React, { createContext, useContext, useState } from "react";
+import useGlobal from "../Hooks/useGlobal";
 
 const globalContext = createContext();
 
 export function GlobalProvider({ children }) {
-  const gbValue = useGlobal();
+  const gbValue = useGlobal(); // Get global data
+  const [cartUpdateFlag, setCartUpdateFlag] = useState(false); // Initialize the state
+  const updateCart = () => {
+    setCartUpdateFlag((prev) => !prev);
+  };
   return (
-    <globalContext.Provider value={gbValue}>
+    <globalContext.Provider
+      value={{ ...gbValue, cartUpdateFlag, setCartUpdateFlag, updateCart }}
+    >
       {children}
     </globalContext.Provider>
   );
 }
 
-export const useGlobalCtx = () => useContext(globalContext);
+// Custom hook to use the global context
+export function useGlobalCtx() {
+  return useContext(globalContext);
+}

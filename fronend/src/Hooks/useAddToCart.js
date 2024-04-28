@@ -2,15 +2,17 @@ import { useState } from "react";
 import axios from "axios";
 import { baseURL } from "../Utils";
 import Swal from "sweetalert2";
+import { useGlobalCtx } from "../Contexts/GlobalProvider";
 
 const useAddToCart = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [cartItem, setCartItem] = useState(null);
+  const { updateCart } = useGlobalCtx();
 
   const addToCart = async (productId, userEmail) => {
-    setLoading(true); // Start loading
-    setError(null); // Clear previous errors
+    setLoading(true);
+    setError(null);
 
     try {
       const response = await axios.post(`${baseURL}/api/addToCart`, {
@@ -19,6 +21,7 @@ const useAddToCart = () => {
       });
 
       if (response.status === 200) {
+        updateCart();
         setCartItem(response.data.message);
         Swal.fire({
           position: "top-end",

@@ -30,12 +30,16 @@ import {
   getProductsByCategoriesId,
   getProductsByProductId,
 } from "./controllers/products/product.controllers.js";
-import {
-  addToCart,
-  getCartProductsByUserEmail,
-} from "./controllers/Cart/cart.controllers.js";
+
 import protectRoute from "./middleware/protectRoute.js";
 import { getCategories } from "./controllers/categories/categories.controllers.js";
+import {
+  addToCart,
+  addToWishlist,
+  deleteCartProduct,
+  getCartProductsByUserEmail,
+  quantityUpdate,
+} from "./controllers/cart/cart.controllers.js";
 
 export default class App {
   constructor() {
@@ -129,8 +133,11 @@ export default class App {
     this.router.get("/products/:categoryId", getProductsByCategoriesId);
     this.router.put("/product/:productId", addReview);
     // add to cart
-    this.router.post("/addToCart", protectRoute, addToCart);
-    this.router.get("/addToCart/:userEmail", getCartProductsByUserEmail); // protected route need
+    this.router.post("/addToCart", addToCart);
+    this.router.put("/quantityUpdate/:_id", quantityUpdate);
+    this.router.get("/addToCart/:userEmail", getCartProductsByUserEmail);
+    this.router.delete("/deleteCartProduct/:_id", deleteCartProduct);
+    this.router.post("/addToWishlist/:_id", addToWishlist);
   }
   // end change me ----------------
 

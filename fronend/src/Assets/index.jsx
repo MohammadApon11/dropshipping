@@ -27,6 +27,12 @@ import { ReactComponent as Call } from "./icons/call.svg";
 import { ReactComponent as Cancel } from "./icons/cancel.svg";
 import { ReactComponent as Dropdown } from "./icons/dropdown.svg";
 
+import { ReactComponent as Return } from "./icons/return.svg";
+import { ReactComponent as Replacement } from "./icons/replacement.svg";
+import { ReactComponent as Moneyback } from "./icons/moneyback.svg";
+import { ReactComponent as Purchase } from "./icons/purchase.svg";
+import { ReactComponent as Original } from "./icons/original.svg";
+
 export {
   // Images
   Ameraca,
@@ -38,6 +44,8 @@ export {
   Rocket,
   Visa,
   DefaultImg,
+  loginBg,
+  signupBg,
   // SVG
   DeliveryBx,
   DeliveryBx2,
@@ -53,6 +61,9 @@ export {
   Logo,
   Avatar,
   Search,
-  loginBg,
-  signupBg,
+  Return,
+  Replacement,
+  Moneyback,
+  Purchase,
+  Original,
 };

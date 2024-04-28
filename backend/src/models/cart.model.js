@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Product from "./product.model";
 
 const cartItemSchema = new mongoose.Schema(
   {
@@ -7,8 +8,8 @@ const cartItemSchema = new mongoose.Schema(
       required: true, // User's email associated with this cart item
     },
     productId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product", // Reference to the Product model
+      type: String,
+      ref: Product, // Reference to the Product model
       required: true,
     },
     name: {
@@ -18,6 +19,14 @@ const cartItemSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: true, // Product price
+    },
+    brand: {
+      type: String,
+      required: true, // Product Brand
+    },
+    regularPrice: {
+      type: Number,
+      required: true, // Product Regular Price
     },
     image: {
       type: String, // Product image

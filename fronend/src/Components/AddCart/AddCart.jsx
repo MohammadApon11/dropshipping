@@ -67,7 +67,7 @@ const AddCart = () => {
         "https://img.freepik.com/free-vector/mysterious-gangster-character-illustration_23-2148460670.jpg?w=740&t=st=1708429998~exp=1708430598~hmac=eab247ca0be45bdc32c66d666374b0c1d7094ebac068d3d536ff24c466fb99c4",
       createdAt: new Date().toLocaleDateString(),
     };
-    console.log("Reviews", reviews);
+
     axios.put(`${baseURL}/api/product/${product._id}`, reviews).then((res) => {
       if (res.data.success) {
         reset();

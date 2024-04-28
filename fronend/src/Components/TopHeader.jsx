@@ -5,11 +5,17 @@ import SVGIcon from "./Share/SVGIcon";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../Contexts/AuthContext";
 import useLogout from "../Hooks/useLogout";
+import { MdAddShoppingCart } from "react-icons/md";
+import { LuShoppingCart } from "react-icons/lu";
+import useGetAllCartProductByUserEmail from "../Hooks/useGetAllCartProductByUserEmail";
 
 export default function TopHeader() {
   const { authUser } = useAuthContext();
   const { loading, logout } = useLogout();
   const [showLogout, setShowLogout] = useState(false);
+  const { allCartProduct } = useGetAllCartProductByUserEmail(
+    authUser?.userEmail
+  );
   return (
     <div className="flex justify-between items-center py-5 space-x-8">
       <div className="flex items-center space-x-3.5">
@@ -42,9 +48,19 @@ export default function TopHeader() {
         <div className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full">
           <SVGIcon Icon={Notification} />
         </div>
-        <div className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full">
-          <SVGIcon Icon={DeliveryBx} />
-        </div>
+        <Link
+          to="/cart"
+          className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full"
+        >
+          <div className="w-4 h-4 flex items-center justify-center -mt-9 absolute ml-4 bg-header text-white rounded-full text-[14px]">
+            <span className="">{allCartProduct?.length}</span>
+          </div>
+          {allCartProduct?.length < 0 ? (
+            <MdAddShoppingCart className="text-header text-xl" />
+          ) : (
+            <LuShoppingCart className="text-header text-xl" />
+          )}
+        </Link>
         <div
           onMouseOver={() => setShowLogout(true)}
           onMouseLeave={() => setShowLogout(false)}
@@ -60,7 +76,7 @@ export default function TopHeader() {
                 }`}
               >
                 <div className="h-[10px] absolute w-full bg-transparent"></div>
-                <div className="bg-header text-white absolute top-[45px]  z-10 -left-[130px] rounded-md w-[170px] p-5">
+                <div className="bg-header text-white absolute top-[45px]  z-[100] -left-[130px] rounded-md w-[170px] p-5">
                   <div className="w-full relative">
                     <div className="w-6 h-6 rotate-45 bg-header -top-5 -right-2 absolute z-20"></div>
                     <p>{authUser?.fullName}</p>

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseURL } from "../Utils";
+import { useGlobalCtx } from "../Contexts/GlobalProvider";
 
 const useGetAllCartProductByUserEmail = (userEmail) => {
   const [allCartProduct, setAllCartProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const { cartUpdateFlag } = useGlobalCtx();
   useEffect(() => {
     const fetchCarts = async () => {
       try {
@@ -24,7 +25,7 @@ const useGetAllCartProductByUserEmail = (userEmail) => {
     if (userEmail) {
       fetchCarts();
     }
-  }, [userEmail]);
+  }, [userEmail,cartUpdateFlag]);
 
   return { allCartProduct, loading, error };
 };
