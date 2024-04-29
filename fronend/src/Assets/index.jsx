@@ -32,6 +32,7 @@ import { ReactComponent as Replacement } from "./icons/replacement.svg";
 import { ReactComponent as Moneyback } from "./icons/moneyback.svg";
 import { ReactComponent as Purchase } from "./icons/purchase.svg";
 import { ReactComponent as Original } from "./icons/original.svg";
+import { ReactComponent as Order } from "./icons/orders.svg";
 
 export {
   // Images
@@ -66,4 +67,5 @@ export {
   Moneyback,
   Purchase,
   Original,
+  Order,
 };

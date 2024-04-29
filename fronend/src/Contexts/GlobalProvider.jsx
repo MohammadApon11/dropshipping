@@ -9,9 +9,17 @@ export function GlobalProvider({ children }) {
   const updateCart = () => {
     setCartUpdateFlag((prev) => !prev);
   };
+  const [totalPrice, setTotalPrice] = useState(""); // Initialize the state
   return (
     <globalContext.Provider
-      value={{ ...gbValue, cartUpdateFlag, setCartUpdateFlag, updateCart }}
+      value={{
+        ...gbValue,
+        cartUpdateFlag,
+        setCartUpdateFlag,
+        updateCart,
+        totalPrice,
+        setTotalPrice,
+      }}
     >
       {children}
     </globalContext.Provider>

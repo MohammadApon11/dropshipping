@@ -11,6 +11,7 @@ import Success from "../Components/Success/Success";
 import Fail from "../Components/Fail/Fail";
 import CartDetailPage from "../Pages/CartDetailPage";
 import WishlistPage from "../Pages/WishlistPage";
+import OrderPage from "../Pages/OrderPage";
 
 export default function Routing() {
   const { authUser } = useAuthContext();
@@ -19,12 +20,13 @@ export default function Routing() {
       <Route path="/" element={<HomePage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:categoryId" element={<ProductsPage />} />
-      <Route path="/product/:productId" element={<CartPage />} />
-      <Route path="/cart" element={<CartDetailPage />} />
-      <Route path="/wishlist" element={<WishlistPage />} />
-      <Route path="/checkout" element={<CheckoutPage />} />
-      <Route path="/success" element={<Success />} />
-      <Route path="/fail?" element={<Fail />} />
+      <Route path="/product/:productId" element={authUser && <CartPage />} />
+      <Route path="/cart" element={authUser && <CartDetailPage />} />
+      <Route path="/wishlist" element={authUser && <WishlistPage />} />
+      <Route path="/checkout" element={authUser && <CheckoutPage />} />
+      <Route path="/order" element={authUser && <OrderPage />} />
+      <Route path="/success?" element={authUser && <Success />} />
+      <Route path="/fail?" element={authUser && <Fail />} />
       <Route
         path="/signup"
         element={authUser ? <HomePage /> : <SignupPage />}

@@ -3985,6 +3985,11 @@ node-git-info@^1.1.0:
     command-line-args "^3.0.3"
     moment "2.16.0"
 
+node-global-storage@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-global-storage/-/node-global-storage-2.0.0.tgz#1a3b0eefa0b82b1ec77087ffe40556a325267c29"
+  integrity sha512-X0xCDM4rxmW7pDpU3iCjqB58m5AOfg4JDl/YJrYLoqh/xpp80yrGtM6ToGd2+NImI4CQHPSO8a37VC8HssOU7Q==
+
 node-releases@^2.0.8:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.10.tgz#c311ebae3b6a148c89b1813fd7c4d3c024ef537f"
@@ -4983,6 +4988,11 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 v8flags@^3.1.1:
   version "3.2.0"

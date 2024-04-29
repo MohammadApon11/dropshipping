@@ -5,12 +5,16 @@ const useGlobal = () => {
   const [open, setOpen] = useState(false);
   const [mbCode, setMbCode] = useState(countryCode[15]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [product, setProduct] = useState({});
 
   const toggleModal = () => setOpen(!open);
 
   const getPayment = (body) => {
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/api/bkash`, { ...body, totalPrice });
-  }
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/api/bkash`, {
+      ...body,
+      totalPrice,
+    });
+  };
   return {
     toggleModal,
     open,
@@ -19,6 +23,8 @@ const useGlobal = () => {
     getPayment,
     totalPrice,
     setTotalPrice,
+    product,
+    setProduct,
   };
 };
 export default useGlobal;

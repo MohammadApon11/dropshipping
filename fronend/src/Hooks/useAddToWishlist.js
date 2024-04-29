@@ -28,7 +28,6 @@ const useAddToWishlist = () => {
       }
     } catch (err) {
       console.error("Error adding to wishlist:", err);
-      console.log(err.response);
       if (err.response.data.error === "Product is already in the wishlist") {
         Swal.fire({
           title: "The Error?",

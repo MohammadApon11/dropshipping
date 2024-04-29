@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Avatar, DeliveryBx, Logo, Notification, Search } from "../Assets";
+import {
+  Avatar,
+  DeliveryBx,
+  Logo,
+  Notification,
+  Order,
+  Search,
+} from "../Assets";
 import Input from "./Share/Input";
 import SVGIcon from "./Share/SVGIcon";
 import { Link } from "react-router-dom";
@@ -50,6 +57,9 @@ export default function TopHeader() {
         )}
         {authUser && (
           <>
+            <Link className="hover:underline" to="/order">
+              My Orders
+            </Link>
             <Link
               to="/wishlist"
               className="bg-bgLogo w-10 h-10 flex items-center justify-center rounded-full"

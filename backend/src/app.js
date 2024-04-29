@@ -41,6 +41,8 @@ import {
   getWishlistProductsByUserEmail,
   quantityUpdate,
 } from "./controllers/cart/cart.controllers.js";
+import paymentMiddleware from "./middleware/paymentMiddleware.js";
+import paymentController from "./controllers/payment/payment.controller.js";
 
 export default class App {
   constructor() {
@@ -141,6 +143,28 @@ export default class App {
     // wishlist
     this.router.get("/wishlist/:userEmail", getWishlistProductsByUserEmail);
     this.router.post("/addToWishlist/:_id", addToWishlist);
+    // payment
+    this.router.post(
+      "/bkash/payment/create",
+      paymentMiddleware.bkash_auth,
+      paymentController.payment_create
+    );
+
+    this.router.get(
+      "/bkash/payment/callback",
+      paymentMiddleware.bkash_auth,
+      paymentController.call_back
+    );
+    this.router.get(
+      "/orders",
+      paymentMiddleware.bkash_auth,
+      paymentController.getAllOrders
+    );
+    this.router.get(
+      "/bkash/payment/refund/:trxID",
+      paymentMiddleware.bkash_auth,
+      paymentController.refund
+    );
   }
   // end change me ----------------
 

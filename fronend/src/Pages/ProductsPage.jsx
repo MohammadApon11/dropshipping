@@ -66,7 +66,7 @@ export default function ProductsPage() {
       <UseScrollTop />
       <div className="grid grid-cols-12 gap-x-4 md:mt-[40px] mt-[20px]">
         <div className="lg:col-span-3 md:col-span-4 md:block hidden">
-          <h4 className="text-[20px] text-black border-l-[3px] border-l-pink-500 pl-4 py-[14px] border font-semibold ">
+          <h4 className="text-[20px] text-black border-l-[3px] border-l-[#ff8000] pl-4 py-[14px] border font-semibold ">
             PRODUCT CATEGORIES
           </h4>
           <div className="flex flex-col text-black border-l border-r">
@@ -80,7 +80,7 @@ export default function ProductsPage() {
               </Link>
             ))}
           </div>
-          <h4 className="mt-[30px] text-[20px] text-black border-l-[3px] border-l-pink-500 pl-4 py-[14px] border font-semibold ">
+          <h4 className="mt-[30px] text-[20px] text-black border-l-[3px] border-l-[#ff8000] pl-4 py-[14px] border font-semibold ">
             TOP RATED PRODUCTS
           </h4>
           <div className="flex flex-col text-black border-l border-r">

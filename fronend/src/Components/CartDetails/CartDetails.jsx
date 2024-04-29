@@ -18,6 +18,7 @@ import { useGlobalCtx } from "../../Contexts/GlobalProvider";
 import useAddToWishlist from "../../Hooks/useAddToWishlist";
 import useUpdateQuantity from "../../Hooks/useUpdateQuantity";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CartDetails() {
   const { authUser } = useAuthContext();
@@ -25,7 +26,7 @@ export default function CartDetails() {
     authUser?.userEmail
   );
   const [LoadingId, setLoadingId] = useState("");
-  const { updateCart } = useGlobalCtx();
+  const { updateCart, product, setProduct } = useGlobalCtx();
   const { deleteCartProduct } = useDeleteCartProduct();
 
   const handleDelete = async (productId) => {
@@ -109,6 +110,10 @@ export default function CartDetails() {
     }
   };
 
+  const handleCheckout = (product) => {
+    setProduct(product);
+  };
+
   return (
     <SectionWraper>
       <UseScrollTop />
@@ -180,9 +185,13 @@ export default function CartDetails() {
                     ${item?.quantity * item?.regularPrice}
                   </del>
                 </div>
-                <button className="btn bg-header text-white hover:bg-header">
-                  Confirm Order
-                </button>
+                <Link
+                  to={`/checkout`}
+                  onClick={() => handleCheckout(item)}
+                  className="btn bg-header text-white hover:bg-header"
+                >
+                  Checkout
+                </Link>
               </div>
             </div>
           ))}
