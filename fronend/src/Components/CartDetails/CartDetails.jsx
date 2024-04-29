@@ -119,82 +119,88 @@ export default function CartDetails() {
       <UseScrollTop />
       <div className="grid grid-cols-12 gap-x-5 py-10">
         <div className="col-span-9 border flex flex-col gap-7 p-8">
-          {allCartProduct?.map((item, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <div className="flex items-center gap-5">
-                <img className="w-40 rounded-md" src={item?.image} alt="" />
-                <div>
-                  <p className="text-xl">{item?.name}</p>
-                  <p className="text-[14px]">{item?.brand}</p>
-                  <div className="flex items-center gap-5 mt-3">
-                    <FaRegTrashAlt
-                      onClick={() => handleDelete(item?._id)}
-                      className="text-xl cursor-pointer hover:text-red-500 transition-all duration-300"
-                    />
-                    <div className="flex items-center gap-2 cursor-pointer hover:text-[#f90] transition-all duration-300">
-                      <FaRegHeart
-                        onClick={() => handleAddToWishlist(item?.productId)}
-                        className="text-xl"
+          {allCartProduct > 0 ? (
+            allCartProduct?.map((item, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <div className="flex items-center gap-5">
+                  <img className="w-40 rounded-md" src={item?.image} alt="" />
+                  <div>
+                    <p className="text-xl">{item?.name}</p>
+                    <p className="text-[14px]">{item?.brand}</p>
+                    <div className="flex items-center gap-5 mt-3">
+                      <FaRegTrashAlt
+                        onClick={() => handleDelete(item?._id)}
+                        className="text-xl cursor-pointer hover:text-red-500 transition-all duration-300"
                       />
-                      <p className="text-[15px]">Wishlists</p>
+                      <div className="flex items-center gap-2 cursor-pointer hover:text-[#f90] transition-all duration-300">
+                        <FaRegHeart
+                          onClick={() => handleAddToWishlist(item?.productId)}
+                          className="text-xl"
+                        />
+                        <p className="text-[15px]">Wishlists</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-20">
-                <div className="flex items-center">
-                  <div
-                    onClick={() => handleUpdateQuantity("minus", item)}
-                    className={`bg-gray-200 w-8 h-8 flex items-center justify-center cursor-pointer ${
-                      loadingQuantity1 && LoadingId === item?._id
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
-                    }`}
+                <div className="flex items-center gap-20">
+                  <div className="flex items-center">
+                    <div
+                      onClick={() => handleUpdateQuantity("minus", item)}
+                      className={`bg-gray-200 w-8 h-8 flex items-center justify-center cursor-pointer ${
+                        loadingQuantity1 && LoadingId === item?._id
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
+                    >
+                      {loadingQuantity1 && LoadingId === item?._id ? (
+                        <span className="animate-spin text-sm cursor-wait">
+                          ↻
+                        </span>
+                      ) : (
+                        <FaMinus />
+                      )}
+                    </div>
+                    <div className="w-8 h-8 flex items-center justify-center bg-white border-t border-b">
+                      {item?.quantity}
+                    </div>
+                    <div
+                      onClick={() => handleUpdateQuantity("plus", item)}
+                      className={`bg-gray-200 w-8 h-8 flex items-center justify-center cursor-pointer ${
+                        loadingQuantity2 && LoadingId === item?._id
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
+                    >
+                      {loadingQuantity2 && LoadingId === item?._id ? (
+                        <span className="animate-spin text-sm cursor-wait">
+                          ↻
+                        </span>
+                      ) : (
+                        <FaPlus />
+                      )}
+                    </div>
+                  </div>
+                  <div className="">
+                    <p>${item?.quantity * item?.price}</p>
+                    <del className="text-[#f90]">
+                      ${item?.quantity * item?.regularPrice}
+                    </del>
+                  </div>
+                  <Link
+                    to={`/checkout`}
+                    onClick={() => handleCheckout(item)}
+                    className="btn bg-header text-white hover:bg-header"
                   >
-                    {loadingQuantity1 && LoadingId === item?._id ? (
-                      <span className="animate-spin text-sm cursor-wait">
-                        ↻
-                      </span>
-                    ) : (
-                      <FaMinus />
-                    )}
-                  </div>
-                  <div className="w-8 h-8 flex items-center justify-center bg-white border-t border-b">
-                    {item?.quantity}
-                  </div>
-                  <div
-                    onClick={() => handleUpdateQuantity("plus", item)}
-                    className={`bg-gray-200 w-8 h-8 flex items-center justify-center cursor-pointer ${
-                      loadingQuantity2 && LoadingId === item?._id
-                        ? "opacity-50 cursor-not-allowed"
-                        : ""
-                    }`}
-                  >
-                    {loadingQuantity2 && LoadingId === item?._id ? (
-                      <span className="animate-spin text-sm cursor-wait">
-                        ↻
-                      </span>
-                    ) : (
-                      <FaPlus />
-                    )}
-                  </div>
+                    Checkout
+                  </Link>
                 </div>
-                <div className="">
-                  <p>${item?.quantity * item?.price}</p>
-                  <del className="text-[#f90]">
-                    ${item?.quantity * item?.regularPrice}
-                  </del>
-                </div>
-                <Link
-                  to={`/checkout`}
-                  onClick={() => handleCheckout(item)}
-                  className="btn bg-header text-white hover:bg-header"
-                >
-                  Checkout
-                </Link>
               </div>
+            ))
+          ) : (
+            <div className="flex items-center justify-center">
+              <p className="text-4xl">Your Cart is Empty!</p>
             </div>
-          ))}
+          )}
         </div>
         <div className="col-span-3 text-[15px]">
           <div className="border h-[250px]  flex flex-col gap-5 p-6">

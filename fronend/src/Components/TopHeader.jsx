@@ -36,10 +36,10 @@ export default function TopHeader() {
           Project <br /> packers
         </p>
       </div>
-      <div className="flex-1 relative">
+      {/* <div className="flex-1 relative">
         <Input placeholder="Paste the URL of the product" className="pl-12" />
         <SVGIcon Icon={Search} className="absolute top-1/4 left-3" />
-      </div>
+      </div> */}
       <div className="flex items-center space-x-4 ">
         <Link
           to="/products"
@@ -58,7 +58,7 @@ export default function TopHeader() {
         {authUser && (
           <>
             <Link className="hover:underline" to="/order">
-              My Orders
+              All Orders
             </Link>
             <Link
               to="/wishlist"
